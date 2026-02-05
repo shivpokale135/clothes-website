@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleHub - Modern Clothing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">StyleHub</div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="router('home')" class="nav-link active" id="nav-home">Home</a></li>
+                    <li><a href="#" onclick="router('shop')" class="nav-link" id="nav-shop">Shop</a></li>
+                    <li><a href="#" onclick="router('cart')" class="nav-link" id="nav-cart">Cart (<span id="cart-count">0</span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        
+        <!-- 1. Home Section -->
+        <section id="home" class="page-section">
+            <div class="hero">
+                <h1>New Summer Collection</h1>
+                <p>Discover the latest trends in fashion.</p>
+                <button class="btn-primary" onclick="router('shop')">Shop Now</button>
+            </div>
+        </section>
+
+        <!-- 2. Shop Section -->
+        <section id="shop" class="page-section hidden">
+            <h2>Our Products</h2>
+            <div class="product-grid" id="product-list">
+                <!-- Products will be injected here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- 3. Cart Section -->
+        <section id="cart" class="page-section hidden">
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-container">
+                <!-- Cart items will be injected here -->
+                <p id="empty-cart-msg">Your cart is empty.</p>
+            </div>
+            <div class="cart-summary hidden" id="cart-summary">
+                <h3>Total: $<span id="cart-total">0.00</span></h3>
+                <button class="btn-primary" onclick="router('checkout')">Proceed to Checkout</button>
+            </div>
+        </section>
+
+        <!-- 4. Checkout Section -->
+        <section id="checkout" class="page-section hidden">
+            <h2>Checkout</h2>
+            <div class="checkout-form">
+                <form onsubmit="placeOrder(event)">
+                    <h3>Shipping Details</h3>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" placeholder="Address" required>
+                    <input type="text" placeholder="City" required>
+
+                    <h3>Payment Method</h3>
+                    <div class="payment-options">
+                        <label class="payment-label">
+                            <input type="radio" name="payment" value="upi" checked onclick="togglePayment('upi')"> 
+                            UPI
+                        </label>
+                        <label class="payment-label">
+                            <input type="radio" name="payment" value="cod" onclick="togglePayment('cod')"> 
+                            Cash on Delivery
+                        </label>
+                    </div>
+
+                    <!-- UPI Details (Hidden by default) -->
+                    <div id="upi-details" class="payment-info">
+                        <p>Send payment to: <strong>example@upi</strong></p>
+                        <input type="text" placeholder="Enter UPI Transaction ID" id="upi-id">
+                    </div>
+
+                    <button type="submit" class="btn-primary full-width">Place Order</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 5. Success Section -->
+        <section id="success" class="page-section hidden">
+            <div class="success-message">
+                <h2>Thank You!</h2>
+                <p>Your order has been placed successfully.</p>
+                <p>You will receive a confirmation email shortly.</p>
+                <button class="btn-primary" onclick="router('home')">Continue Shopping</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 StyleHub. For Practice Only.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+      </html>
